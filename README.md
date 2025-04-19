@@ -6,14 +6,14 @@ Check it out -> https://recommendmemovie.streamlit.app/
 
 This project is a content-based movie recommender system built using Python, Streamlit, and machine learning techniques. It suggests movies similar to a selected title by analyzing textual metadata such as genre, cast, crew, and keywords. The app is deployed using Streamlit Community Cloud, with large file storage managed via Hugging Face Hub.
 
-Key Features:
+### Key Features:
 - Content-Based Filtering: Recommends movies based on similarity in metadata, not user ratings.
 - Cosine Similarity: Computes movie-to-movie similarity using NLP techniques.
 - Poster Fetching: Retrieves movie posters dynamically using the TMDb API.
 - Lightweight Web Interface: Built using Streamlit for interactive recommendations.
 - Large File Handling: Hosts .pkl files on Hugging Face and loads them remotely using Python.
 
-Tech Stack:
+### Tech Stack:
 Layer | Tool/Library
 Frontend | Streamlit
 Backend | Python
@@ -21,7 +21,7 @@ ML/NLP | scikit-learn, pandas
 Deployment | Streamlit Cloud + GitHub
 File Hosting | Hugging Face Hub
 
-Technologies/concepts used:
+### Technologies/concepts used:
 Component | Technology / Concept
 Language | Python
 Data Handling | pandas, numpy
@@ -32,9 +32,9 @@ Deployment | Streamlit Cloud + GitHub
 Large File Hosting | Hugging Face Hub (for similarity.pkl)
 Poster API | TMDb API
 
-Workflow:
+### Workflow:
 
-1. Dataset Acquisition and Pre-processing
+#### 1. Dataset Acquisition and Pre-processing
 
 Dataset Used: https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
 tmdb_5000_movies.xlsx – contains movie overviews, genres, and production info
@@ -45,7 +45,7 @@ Merging & Cleaning:
 - Dropped unnecessary columns like production companies, release dates, and budget that weren’t used in similarity scoring.
 - Checked for and removed duplicate entries and handled null values.
    
-2. Feature Engineering and Count Representation
+#### 2. Feature Engineering and Count Representation
 
 Extracted Features:
 - Genres: Converted list of dictionaries into flat strings (e.g., ["Action", "Adventure"] → "action adventure")
@@ -62,7 +62,7 @@ Text Preprocessing:
 - Removed punctuation and performed basic normalization
 - Applied stemming to reduce words to their base/root form
 
-3. NLP Vectorization & Similarity Computation
+#### 3. NLP Vectorization & Similarity Computation
 
 Vectorization:
 - Used CountVectorizer from scikit-learn
@@ -78,7 +78,7 @@ Cosine Similarity:
 0 = orthogonal vectors (completely dissimilar)
 - Results in a symmetric similarity matrix where: similarity[i][j] = similarity between movie i and movie j, Matrix shape: n x n, where n = number of movies
   
-4. Recommendation Logic
+#### 4. Recommendation Logic
 
 When a user selects a movie:
 - Find its index in the dataframe
@@ -88,14 +88,14 @@ When a user selects a movie:
 - Select top N movies (usually 5–10)
 - Display recommended movie titles along with their posters
    
-5. Poster Retrieval via TMDb API
+#### 5. Poster Retrieval via TMDb API
 
 To enhance visual appeal, the app fetches movie posters using the TMDb API:
 - Each movie in the dataset has a unique movie_id
 - A GET request is sent to TMDb’s /movie/{id} endpoint
 - The API returns JSON with metadata, including a poster_path
     
-6. Deployment
+#### 6. Deployment
 
 Given that similarity.pkl exceeds GitHub’s 100 MB limit, a two-part deployment strategy was implemented:
 
@@ -112,7 +112,7 @@ iii. Performance Optimization
 - Used @st.cache_data in Streamlit to cache the remote file after the first download
 - Avoids repeated network calls and speeds up app responsiveness
 
-Learning Highelights:
+### Learning Highelights:
 
 - Practical application of NLP techniques in recommendation systems
 - Using cosine similarity for vector-based comparisons
@@ -120,7 +120,7 @@ Learning Highelights:
 - Streamlit caching and deployment best practices
 - Understanding of the end-to-end deployment lifecycle
 
-Future Scope:
+### Future Scope:
 
 - Improve recommendation logic with TF-IDF or hybrid collaborative filtering
 - Add search functionality or filters (genre, year, etc.)
