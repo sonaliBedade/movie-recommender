@@ -1,4 +1,7 @@
 # movie-recommender
+
+Check it out -> https://recommendmemovie.streamlit.app/
+
 ![image](https://github.com/user-attachments/assets/4c780856-01f6-4b3c-b207-4cf6a3e8b56c)
 
 This project is a content-based movie recommender system built using Python, Streamlit, and machine learning techniques. It suggests movies similar to a selected title by analyzing textual metadata such as genre, cast, crew, and keywords. The app is deployed using Streamlit Community Cloud, with large file storage managed via Hugging Face Hub.
