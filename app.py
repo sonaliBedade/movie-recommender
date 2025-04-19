@@ -2,11 +2,13 @@ import streamlit as st
 import pickle
 import pandas as pd
 import requests
+import io
 
+@st.cache_data
 def load_similarity():
-    url = "https://huggingface.co/SonaliB15/movie-recommender-data/blob/main/similarity.pkl"
+    url = "https://huggingface.co/SonaliB15/movie-recommender-data/resolve/main/similarity.pkl"
     response = requests.get(url)
-    return pickle.load(response.content)
+    return pickle.load(io.BytesIO(response.content))
 
 # Load movie data
 movies_df = pickle.load(open('movies.pkl', 'rb'))
