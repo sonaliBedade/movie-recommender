@@ -5,7 +5,7 @@ import requests
 import io
 
 def load_similarity():
-    url = "https://huggingface.co/SonaliB15/movie-recommender-data/blob/main/similarity.pkl"
+    url = "https://huggingface.co/SonaliB15/movie-recommender-data/resolve/main/similarity.pkl"
     response = requests.get(url)
     return pickle.load(io.BytesIO(response.content))
 
